@@ -43,6 +43,13 @@ class Sockets {
                 this.io.emit('getBands', this.bandList.getBands());
             })
 
+            socket.on('addBand', (name: string) => {
+                console.log('Event received - Add Band');
+
+                this.bandList.addBand(name);
+                this.io.emit('getBands', this.bandList.getBands());
+            })
+
             //on disconnected client
             socket.on("disconnect", () => {
                 console.log('Client disconnected: ', socket.id, socket.handshake.address, '\n');
